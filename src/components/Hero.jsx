@@ -1,4 +1,5 @@
 import Button from "./Button";
+import face from "../assets/face.jpg";
 import Typewriter from "./Typewriter";
 import { motion } from "motion/react";
 import { LuSend } from "react-icons/lu";
@@ -7,7 +8,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FiLinkedin } from "react-icons/fi";
 import { FaArrowDown } from "react-icons/fa6";
 
-const Hero = ({isMobile}) => {
+const Hero = ({ isMobile }) => {
   const parentVariants = {
     hidden: {},
     show: {
@@ -124,7 +125,8 @@ const Hero = ({isMobile}) => {
               },
             }}
             viewport={{ once: true }} // animate scale only once
-            className="bg-[url('src/assets/face.jpg')] bg-center bg-cover size-48 md:size-[clamp(10rem,23vw,16rem)] lg:size-70 xl:size-80 inset-shadow-[0_0_0_7px] lg:inset-shadow-[0_0_0_9px] inset-shadow-black/40 rounded-full filter lg:grayscale lg:brightness-90 hover:filter-none hover:brightness-100 transition-[filter] duration-300 ease-in-out cursor-hide"
+            style={{ backgroundImage: `url(${face})` }}
+            className="bg-center bg-cover size-48 md:size-[clamp(10rem,23vw,16rem)] lg:size-70 xl:size-80 inset-shadow-[0_0_0_7px] lg:inset-shadow-[0_0_0_9px] inset-shadow-black/40 rounded-full filter lg:grayscale lg:brightness-90 hover:filter-none hover:brightness-100 transition-[filter] duration-300 ease-in-out cursor-hide"
           ></motion.div>
         </div>
         <div className="order-3 md:order-2 w-full flex flex-col items-start gap-8 md:gap-12 md:flex-1">

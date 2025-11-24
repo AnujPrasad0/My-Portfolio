@@ -1,4 +1,5 @@
 import Button from "./Button";
+import face from "../assets/face.jpg";
 import { motion } from "motion/react";
 import Typewriter from "./Typewriter";
 import HeadSection from "./HeadSection";
@@ -100,7 +101,8 @@ const About = () => {
           }}
           whileHover={{ borderRadius: "100%" }}
           viewport={{ amount: 0.25 }}
-          className="rounded-2xl size-55 lg:size-85 bg-[url('src/assets/face.jpg')] bg-center bg-cover filter lg:grayscale lg:brightness-90 hover:filter-none hover:brightness-100 transition-[filter] duration-300 ease-in-out"
+          style={{ backgroundImage: `url(${face})` }}
+          className="rounded-2xl size-55 lg:size-85 bg-center bg-cover filter lg:grayscale lg:brightness-90 hover:filter-none hover:brightness-100 transition-[filter] duration-300 ease-in-out"
         ></motion.div>
         <div className="flex flex-col flex-1 items-center justify-between gap-5 lg:gap-10 max-w-150">
           <motion.div
