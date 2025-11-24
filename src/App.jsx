@@ -1,3 +1,5 @@
+import Lenis from "lenis";
+import { useEffect } from "react";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Footer from "./components/Footer";
@@ -11,9 +13,24 @@ import Qualification from "./components/Qualification";
 
 const App = () => {
   const isMobile = window.innerWidth < 768;
+  useEffect(() => {
+    const lenis = new Lenis({ duration: 1.2, smooth: true });
+
+    let rafId;
+    const raf = (time) => {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    };
+    rafId = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+    };
+  }, []);
 
   return (
-    <div className="max-w-400 poppins-thin text-[#323232]">
+    <div className="max-w-400 poppins-thin text-[#323232] overflow-x-hidden">
       <Navbar isMobile={isMobile} />
       <Hero isMobile={isMobile} />
       <About />

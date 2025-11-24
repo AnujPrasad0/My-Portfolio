@@ -31,8 +31,6 @@ const Contact = () => {
     formState: { errors },
   } = useForm();
 
-  console.log(errors);
-
   function submitHandler(e) {
     console.log(e);
   }
