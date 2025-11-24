@@ -148,7 +148,7 @@ const Hero = ({ isMobile }) => {
                   ease: "easeInOut",
                 }}
                 style={{ originY: 1 }}
-                className="text-4xl md:text-5xl lg:text-6xl relative -top-2"
+                className="text-4xl md:text-5xl lg:text-6xl relative -top-2 cursor-default"
               >
                 🖐🏻
               </motion.span>

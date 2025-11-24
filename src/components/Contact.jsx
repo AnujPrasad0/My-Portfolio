@@ -1,7 +1,9 @@
 import Button from "./Button";
+import { useState } from "react";
 import Typewriter from "./Typewriter";
 import { motion } from "motion/react";
 import { toast } from "react-toastify";
+import emailjs from "@emailjs/browser";
 import HeadSection from "./HeadSection";
 import { LuSend } from "react-icons/lu";
 import { useForm } from "react-hook-form";
@@ -29,11 +31,47 @@ const Contact = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
-  function submitHandler(e) {
-    console.log(e);
+  const [sending, setSending] = useState(false);
+
+  // fill these with values from EmailJS dashboard
+  const SERVICE_ID = "service_jutu7ah";
+  const TEMPLATE_ID = "template_t7j0g59";
+  const PUBLIC_KEY = "W0ByBLsr-U-t_O1Oh";
+
+  async function submitHandler(data) {
+    setSending(true);
+    const templateParams = {
+      name: data.name,
+      email: data.email,
+      message: data.textarea, // match your form field name
+    };
+
+    try {
+      const res = await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        templateParams,
+        PUBLIC_KEY
+      );
+      // optional: check res.status or res.text
+      toast.success("Message sent — check your Gmail!");
+      reset(); // clear form
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      toast.error("Failed to send message. Try again later.");
+    } finally {
+      setSending(false);
+    }
   }
+
+  const invalidHandler = (err) => {
+    toast.error(err?.name?.message);
+    toast.error(err?.email?.message);
+    toast.error(err?.textarea?.message);
+  };
 
   const buttonIconVariant = {
     hidden: {
@@ -133,11 +171,7 @@ const Contact = () => {
             className="text-center font-semibold text-xl"
           />
           <form
-            onSubmit={handleSubmit(submitHandler, (err) => {
-              toast.error(err?.name?.message);
-              toast.error(err?.email?.message);
-              toast.error(err?.textarea?.message);
-            })}
+            onSubmit={handleSubmit(submitHandler, invalidHandler)}
             className="flex flex-col items-start gap-7"
           >
             <motion.label

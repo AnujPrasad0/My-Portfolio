@@ -5,7 +5,7 @@ export default function LenisCursor({
   size = 16,                 // px
   color = "#323232",
   // baseLerp: logical smoothing per 1/60s frame. 0.12 ~ Lenis-like. Lower = smoother/slower.
-  baseLerp = 0.12,
+  baseLerp = 0.3,
   hideClass = "cursor-hide", // elements with this class hide the cursor
   showOnMobile = false,      // set true if you want it on small screens
 }) {
