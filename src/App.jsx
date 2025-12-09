@@ -30,7 +30,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="max-w-400 poppins-thin text-[#323232] overflow-x-hidden">
+    <div className="max-w-400 w-full poppins-thin m-auto text-[#323232] overflow-x-hidden">
       <Navbar isMobile={isMobile} />
       <Hero isMobile={isMobile} />
       <About />

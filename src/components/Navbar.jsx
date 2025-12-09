@@ -107,7 +107,7 @@ const Navbar = ({ isMobile }) => {
     <>
       {/* TOP / BOTTOM NAVBAR */}
       <div
-        className={`z-50 bg-white fixed w-full bottom-0 md:bottom-auto md:top-0 transition-all duration-300 shadow-[0_-2px_4px_0_rgba(0,0,0,0.1)] ${
+        className={`z-50 bg-white fixed w-full max-w-400 bottom-0 md:bottom-auto md:top-0 transition-all duration-300 shadow-[0_-2px_4px_0_rgba(0,0,0,0.1)] ${
           hidden
             ? isMobile
               ? "translate-y-full"
